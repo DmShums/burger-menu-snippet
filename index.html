@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="En">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+/* burger menu */
+.toggle{
+  position: absolute;
+  top: 10%;
+  left: 95%;
+  transform: translate( -50px, -50px);
+}
+.toggle span{
+  position: relative;
+  width: 36px;
+  height: 4px;
+  background: black;
+  display: block;
+  margin: 8px;
+  transition: 0.5s;
+}
+.toggle span:nth-child(1){
+  transform-origin: left;
+}
+.toggle span:nth-child(2){
+  transform-origin: center;
+}
+.toggle span:nth-child(3){
+  transform-origin: left;
+}
+.toggle.active span:nth-child(1){
+  transform: rotate(45deg);
+  left: 2px;
+}
+.toggle.active span:nth-child(2){
+  transform: rotate(315deg);
+  right: 3px;
+}
+.toggle.active span:nth-child(3){
+  transform: scaleX(0);
+}
+
+/* burger menu */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a class="closebtn" style="cursor:pointer" id="closeButton" onclick="closeNav()">&times;</a>
+  <a class="nav-main" href="">Main</a>
+  <a class="nav-list" href="">Second</a>
+</div>
+
+<div id="main">
+    <a id="burgerSpan" onclick="openNav()" style="cursor:pointer">
+        <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+      </a>
+</div>
+
+<script>
+
+const a = document.getElementById("mySidenav"),
+      b = document.getElementById("main"),
+      c = document.querySelector('.toggle'),
+      burgerSpan = document.getElementById('burgerSpan'),
+      btn = document.getElementById("closeButton");
+   
+if (burgerSpan.hasAttribute( "onClick", "closeNav()")){
+  c.addEventListener("click", function(){c.classList.add("active")})
+}
+
+if (burgerSpan.hasAttribute( "onClick", "openNav()")){
+  btn.addEventListener("click", function(){c.classList.remove("active")})
+}
+
+function openNav() {
+  a.style.width = "250px";
+  b.style.marginLeft = "250px";
+  burgerSpan.setAttribute( "onClick", "closeNav()");
+  c.addEventListener("click", function(){
+    c.classList.remove("active")
+  })
+}
+
+function closeNav() {
+  a.style.width = "0";
+  b.style.marginLeft= "0";
+  burgerSpan.setAttribute( "onClick", "openNav()")
+  c.addEventListener("click", function(){
+    c.classList.add("active")
+  })
+}
+
+</script>
+   
+</body>
+</html> 
