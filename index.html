@@ -45,7 +45,11 @@
 
 .sidenav {
   height: 100%;
-  width: 0;
+  /* width: 0; */
+  /* second option */
+  width: 250px;
+  transform: translate(-250px);
+  /* second option */
   position: fixed;
   z-index: 1;
   top: 0;
@@ -123,8 +127,11 @@ if (burgerSpan.hasAttribute( "onClick", "openNav()")){
 }
 
 function openNav() {
-  a.style.width = "250px";
-  b.style.marginLeft = "250px";
+  // a.style.width = "250px";
+  // b.style.marginLeft = "250px";
+  /* second option */
+  a.style.transform = "translate(0px)";
+  /* second option */
   burgerSpan.setAttribute( "onClick", "closeNav()");
   c.addEventListener("click", function(){
     c.classList.remove("active")
@@ -132,8 +139,11 @@ function openNav() {
 }
 
 function closeNav() {
-  a.style.width = "0";
-  b.style.marginLeft= "0";
+  // a.style.width = "0";
+  // b.style.marginLeft= "0";
+  /* second option */
+  a.style.transform = "translate(-250px)";
+  /* second option */
   burgerSpan.setAttribute( "onClick", "openNav()")
   c.addEventListener("click", function(){
     c.classList.add("active")
